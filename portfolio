@@ -1,40 +1,50 @@
-#calculadora
+''' Calculadora com while '''
 
-def soma():
-    a = float(input('Digite o primeiro número: '))
-    b = float(input('Digite o segundo número: '))
-    print('Soma: ', a+b)
+while True:
+    num_1 = input('Digite um número: ')
+    num_2 = input('Digite outro número: ')
+    operador = input('Digite o operador (+-/*): ')
 
-def subtracao():
-    a = float(input('Digite o primeiro número: '))
-    b = float(input('Digite o segundo nùmero: '))
-    print('Subtração: ', a-b)
+    num_validos = None
+    num_1_float = 0
+    num_2_float = 0
 
-def multiplicacao():
-    a = float(input('Digite o primeiro número: '))
-    b = float(input('Digite o segundo nùmero: '))
-    print = ('Multiplicação: ', a*b)
+    try:
+        num_1_float = float(num_1)
+        num_2_float = float(num_2)
+        num_validos = True
+    except:
+        num_validos = None
 
-def divisao():
-    a = float(input('Digite o primeiro número: '))
-    b = float(input('Digite o segundo némero: '))
-    print('Divisão: ', a/b)
+    if num_validos is None:
+            print('Um ou ambos os números digitados são inválidos')
+            continue
 
-opcao = 1
-while opcao:
-    print('0. Sair')
-    print('1. Soma')
-    print('2. Subtração')
-    print('3. Divisão')
-    print('4. Multiplicação')
+    operadores_perrmitidos = '+-/*'
 
-    opcao = int(input('Opção: '))
+    if operador not in operadores_perrmitidos:
+            print('Operador Inválido.')
+            continue
 
-    if(opcao==1):
-        soma()
-    if(opcao==2):
-        subtracao()
-    if(opcao==3):
-        divisao()
-    if(opcao==4):
-        multiplicacao()
+    if len(operador) > 1:
+            print('Digite apenas um operador.')
+            continue
+        
+    print('Realizando sua conta. Confira o resultado abaixo:')
+
+    if operador == '+':
+            print(num_1_float + num_2_float)
+    elif operador == '-':
+            print(num_1_float - num_2_float)
+    elif operador == '/':
+            print(num_1_float / num_2_float)
+    elif operador == '*':
+            print(num_1_float * num_2_float)
+    else:
+            print()
+
+    sair = input('Quer sair? [s]im: ').lower().startswith('s')
+    print(sair)
+
+    if sair is True:
+        break
